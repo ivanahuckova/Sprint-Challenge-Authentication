@@ -15,18 +15,22 @@ function Navbar(props) {
       <NavLink activeClassName="active" className="navigation-link" to="/home">
         Home
       </NavLink>
-      <NavLink activeClassName="active" className="navigation-link" to="/register">
-        Register
-      </NavLink>
-      <NavLink activeClassName="active" className="navigation-link" to="/login">
-        Login
-      </NavLink>
+      {!IsLoggedIn && (
+        <NavLink activeClassName="active" className="navigation-link" to="/register">
+          Register
+        </NavLink>
+      )}
+      {!IsLoggedIn && (
+        <NavLink activeClassName="active" className="navigation-link" to="/login">
+          Login
+        </NavLink>
+      )}
       {IsLoggedIn && (
         <NavLink activeClassName="active" className="navigation-link" to="/jokes">
           Jokes
         </NavLink>
       )}
-      <SDButtonLogout onClick={logout}>Logout</SDButtonLogout>
+      {IsLoggedIn && <SDButtonLogout onClick={logout}>Logout</SDButtonLogout>}
     </SDNavbarCont>
   );
 }
