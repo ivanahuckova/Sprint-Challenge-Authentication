@@ -17,6 +17,7 @@ export default function Login(props) {
       .then(res => {
         setMessage(res.data.message);
         localStorage.setItem('token', res.data.token);
+        props.history.push('/');
       })
       .catch(err => {
         setMessage(`Error: ${err.response.data.message}`);
