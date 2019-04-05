@@ -43,6 +43,7 @@ const SDNavbarCont = styled.div`
   padding: 0 20%;
   font-size: 1rem;
   color: #2359ac;
+  background-color: #f1f2f2;
   cursor: pointer;
 
   .navigation-link {

@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
-export default function Register(props) {
+//Component
+function Register(props) {
   const [message, setMessage] = useState('');
   const usernameRef = useRef();
   const passwordRef = useRef();
@@ -26,27 +28,67 @@ export default function Register(props) {
     if (passwordRef.current.value === verifyPasswordRef.current.value) {
       registerUser();
     } else {
-      setMessage('Passwords dont match');
+      setMessage("Passwords don't match");
     }
   };
 
   return (
-    <div>
-      <form onSubmit={verifyAndRegister}>
-        <div>
-          Username: <input type="text" ref={usernameRef} />
-        </div>
-        <div>
-          Password: <input type="password" ref={passwordRef} />
-        </div>
-        <div>
-          Verify password: <input type="password" ref={verifyPasswordRef} />
-        </div>
-        <div>
-          <input type="submit" value="submit" />
-        </div>
-      </form>
-      <div>{message}</div>
-    </div>
+    <SDFormCont>
+      <SDForm onSubmit={verifyAndRegister}>
+        <SDFormRow>
+          Username: <input required="required" type="text" ref={usernameRef} />
+        </SDFormRow>
+        <SDFormRow>
+          Password: <input required="required" type="password" ref={passwordRef} />
+        </SDFormRow>
+        <SDFormRow>
+          Verify password: <input required="required" type="password" ref={verifyPasswordRef} />
+        </SDFormRow>
+        <SDFormRow>
+          <input type="submit" value="submit" className="submit-button" />
+        </SDFormRow>
+      </SDForm>
+      <div className="red">{message}</div>
+    </SDFormCont>
   );
 }
+
+//Styling Of Components
+const SDFormCont = styled.div`
+  box-sizing: border-box;
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .red {
+    padding-top: 10px;
+    color: #d81159;
+  }
+`;
+
+const SDForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+`;
+
+const SDFormRow = styled.div`
+  padding: 10px;
+  input {
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+  .submit-button {
+    color: white;
+    background-color: #2359ac;
+    font-size: 1rem;
+    border: none;
+    padding: 5px 20px;
+  }
+`;
+
+export default Register;
