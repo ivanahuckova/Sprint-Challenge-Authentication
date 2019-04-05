@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
-import { Link, NavLink, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 //Import Style
 import './App.css';
 
+//Import Components
+import Navbar from './Components/Navbar';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import Jokes from './Components/Jokes';
+
 class App extends Component {
   render() {
-    return <div className="App">Hello</div>;
+    return (
+      <div className="App">
+        <Navbar />
+        <Route exact path="/login" render={pr => <Login {...pr} />} />
+        <Route exact path="/register" render={pr => <Register {...pr} />} />
+        <Route exact path="/jokes" render={pr => <Jokes {...pr} />} />
+      </div>
+    );
   }
 }
 
