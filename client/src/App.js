@@ -16,10 +16,10 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <Route exact path="/" render={pr => <Home {...pr} />} />
         <Route exact path="/login" render={pr => <Login {...pr} />} />
         <Route exact path="/register" render={pr => <Register {...pr} />} />
         <Route exact path="/jokes" render={pr => <Jokes {...pr} />} />
+        <Route exact path="/home" render={pr => <Home {...pr} />} />
       </div>
     );
   }
