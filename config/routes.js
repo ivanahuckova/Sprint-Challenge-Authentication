@@ -40,6 +40,8 @@ async function login(req, res) {
       } else {
         res.status(400).json({ message: 'Invalid credentials' });
       }
+    } else {
+      res.status(400).json({ message: 'Make sure that username and password are included ' });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
